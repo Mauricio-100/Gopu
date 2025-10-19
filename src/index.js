@@ -3,6 +3,9 @@ import { runGPU } from './modules/gpu.js';
 import { runCPU } from './modules/cpu.js';
 import { runEmulator } from './modules/emulator.js';
 import { runVM } from './modules/vm.js';
+import { detectGopuOS } from './os.js';
+
+detectGopuOS(); // Appelé avant tout
 
 const mode = process.argv[2] || 'cpu';
 
