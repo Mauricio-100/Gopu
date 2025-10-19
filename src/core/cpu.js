@@ -1,16 +1,10 @@
-function simulateRealCPU(threadCount = 4) {
-  console.log(`🧠 Spawning ${threadCount} CPU threads...`);
+import Parallel from 'paralleljs';
 
-  for (let i = 0; i < threadCount; i++) {
-    const worker = new Worker(`
-      const { parentPort } = require('worker_threads');
-      let result = 0;
-      for (let j = 0; j < 1e7; j++) result += Math.sqrt(j);
-      parentPort.postMessage(result);
-    `, { eval: true });
+export function runCPU() {
+  const data = Array.from({ length: 1e5 }, (_, i) => i);
+  const p = new Parallel(data);
 
-    worker.on('message', msg => {
-      console.log(`✅ Thread ${i + 1} done: ${msg.toFixed(2)}`);
-    });
-  }
+  p.map(n => Math.sqrt(n)).then(result => {
+    console.log('🧠 CPU parallel result:', result.slice(0, 5));
+  });
 }
