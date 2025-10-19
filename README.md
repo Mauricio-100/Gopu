@@ -1,6 +1,6 @@
 
 
-![Logo Gopu](./assets/logo.svg)
+<img width="1024" height="1024" alt="IMG_6736" src="https://github.com/user-attachments/assets/ab342bd6-bc26-43ca-be25-0ceafdd6b45b" />
 # 🧠 Gopu — OS agentique terminal-native
 ![Linux](https://img.shields.io/badge/Platform-Linux-only-green?logo=linux)
 ![Ubuntu](https://img.shields.io/badge/Distro-Ubuntu%2022.04-orange?logo=ubuntu)
