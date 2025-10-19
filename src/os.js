@@ -4,17 +4,22 @@ import chalk from 'chalk';
 
 export function detectGopuOS() {
   const platform = os.platform(); // 'linux', 'darwin', 'win32', etc.
-  const userId = `user_id:${process.getuid?.() || 1000}`;
   const hostname = os.hostname();
+  const userId = `user_id:${process.getuid?.() || 1000}:${platform}_${hostname.slice(0, 6)}`;
   const distroInfo = getLinuxDistro();
 
   if (platform !== 'linux') {
-    console.log(chalk.red.bold(`❌ GopuOS is Linux-only. Detected: ${platform}`));
+    const envName = platform === 'win32' ? 'Windows' :
+                    platform === 'darwin' ? 'macOS' :
+                    platform.toUpperCase();
+
+    console.log(chalk.red.bold(`😣 Désolé, Gopu n'est pas encore disponible pour ${envName}`));
+    console.log(chalk.gray(`🔒 Environnement détecté : ${envName} (${hostname})`));
     process.exit(1);
   }
 
   console.log(chalk.green.bold(`✅ GopuOS booted on ${hostname}`));
-  console.log(chalk.cyan(`🔍 ${userId}:${platform}_${hostname.slice(0, 6)}`));
+  console.log(chalk.cyan(`🔍 ${userId}`));
   console.log(chalk.yellow(`🧬 Distro: ${distroInfo}`));
 }
 
