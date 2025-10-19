@@ -3,6 +3,7 @@ import { runGPU } from './modules/gpu.js';
 import { runCPU } from './modules/cpu.js';
 import { runEmulator } from './modules/emulator.js';
 import { runVM } from './modules/vm.js';
+import { initGopuAgent, runGopuAgent } from './agent/llm.js';
 import chalk from 'chalk';
 
 const args = process.argv.slice(2);
@@ -41,8 +42,12 @@ switch (command) {
   case 'cpu': return runCPU();
   case 'emulate': return runEmulator();
   case 'vm': return runVM();
-  default:
-    console.log(chalk.red.bold(`❌ Commande inconnue: ${command}`));
-    console.log(chalk.gray(`Utilisez --help pour voir les commandes disponibles.`));
-    process.exit(1);
 }
+
+// 🧠 Si aucune commande reconnue, on passe au LLM agentique
+await initGopuAgent();
+const input = args.join(' ');
+const response = await runGopuAgent(input);
+
+console.log(chalk.green.bold('\n🤖 Gopu Agent Response:'));
+console.log(chalk.cyan(response));
