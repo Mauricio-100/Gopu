@@ -8,6 +8,11 @@ export function detectGopuOS() {
   const userId = `user_id:${process.getuid?.() || 1000}:${platform}_${hostname.slice(0, 6)}`;
   const distroInfo = getLinuxDistro();
 
+  console.log(chalk.green.bold('🧠 DEBUG GopuOS'));
+  console.log(chalk.cyan(`🔍 Platform: ${platform}`));
+  console.log(chalk.cyan(`🔍 Hostname: ${hostname}`));
+  console.log(chalk.cyan(`🔍 User ID: ${userId}`));
+  console.log(chalk.yellow(`🧬 Distro: ${distroInfo}`));
   if (platform !== 'linux') {
     const envName = platform === 'win32' ? 'Windows' :
                     platform === 'darwin' ? 'macOS' :
