@@ -1,14 +1,12 @@
-function simulateRealGPU(units = 1) {
-  console.log(`🎮 Simulating ${units} GPU units...`);
+import { GPU } from 'gpu.js';
 
+export function runGPU() {
   const gpu = new GPU();
-  const compute = gpu.createKernel(function (a) {
-    return Math.sqrt(a[this.thread.x]);
+  const kernel = gpu.createKernel(function(a) {
+    return a[this.thread.x] * 2;
   }).setOutput([100]);
 
-  for (let i = 0; i < Math.floor(units); i++) {
-    const input = Array.from({ length: 100 }, (_, k) => k * i);
-    const result = compute(input);
-    console.log(`🚀 GPU unit ${i + 1} computed:`, result.slice(0, 5));
-  }
+  const input = Array.from({ length: 100 }, (_, i) => i);
+  const result = kernel(input);
+  console.log('🚀 GPU computed:', result.slice(0, 5));
 }
