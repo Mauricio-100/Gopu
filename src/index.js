@@ -1,15 +1,13 @@
-#!/usr/bin/env node
-import { simulateCPU } from './core/cpu.js';
-import { simulateGPU } from './core/gpu.js';
-import { logStart } from './utils/logger.js';
+import { cpus } from 'os';
+import { Worker } from 'worker_threads';
+import { GPU } from 'gpu.js';
 
-const args = process.argv.slice(2);
-const mode = args[0] || 'cpu';
+const mode = process.argv[2] || 'cpu';
 
-logStart(mode);
-
-if (mode === 'gpu') {
-  simulateGPU({ units: 5.6 });
+if (mode === 'cpu') {
+  simulateRealCPU(18);
+} else if (mode === 'gpu') {
+  simulateRealGPU(5.6);
 } else {
-  simulateCPU({ threads: 18.1 });
+  console.log('❌ Mode inconnu. Utilisez "cpu" ou "gpu".');
 }
