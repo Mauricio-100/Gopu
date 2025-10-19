@@ -1,13 +1,15 @@
-import { cpus } from 'os';
-import { Worker } from 'worker_threads';
-import { GPU } from 'gpu.js';
+#!/usr/bin/env node
+import { runGPU } from './modules/gpu.js';
+import { runCPU } from './modules/cpu.js';
+import { runEmulator } from './modules/emulator.js';
+import { runVM } from './modules/vm.js';
 
 const mode = process.argv[2] || 'cpu';
 
-if (mode === 'cpu') {
-  simulateRealCPU(18);
-} else if (mode === 'gpu') {
-  simulateRealGPU(5.6);
-} else {
-  console.log('❌ Mode inconnu. Utilisez "cpu" ou "gpu".');
+switch (mode) {
+  case 'gpu': return runGPU();
+  case 'cpu': return runCPU();
+  case 'emulate': return runEmulator();
+  case 'vm': return runVM();
+  default: console.log('❌ Mode inconnu. Utilisez cpu | gpu | emulate | vm');
 }
