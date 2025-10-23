@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "gopu = Gopu.gopu:main"
+            "gopu = gopu.Gopu:main"
         ]
     },
     install_requires=[
