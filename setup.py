@@ -6,15 +6,14 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "gopu = gopu.core:launch"
+            "gopu = gopu.gopu:main"
         ]
     },
     install_requires=[
-        "flask",
-        "psutil",
-        "PyYAML"
+        "flask", "psutil", "PyYAML"
     ],
     include_package_data=True,
-    description="🧠 Module agentique pour GopuOS",
-    author="Ceose",
+    zip_safe=False,
+    description="🧠 CLI agentique pour GopuOS",
+    author="Ceose"
 )
