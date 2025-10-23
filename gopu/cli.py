@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-from modules import status, infer, token, db, deploy, ssh, github
+from gopu.modules import status, infer, token, db, deploy, ssh, github
 
 def main():
     args = sys.argv[1:]
