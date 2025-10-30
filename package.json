@@ -1,21 +1,12 @@
+
 {
   "name": "gopu",
-  "version": "1.0.0",
-  "description": "Hyperviseur JS pour CPU/GPU/VM/emulation terminal-native",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "description": "GopuOS — Agentic CLI wrapper for Python backend",
   "bin": {
-    "gopu": "src/index.js"
+    "gopu": "./bin/gopu"
   },
-  "dependencies": {
-    "gpu.js": "^2.0.0",
-    "paralleljs": "^1.0.0",
-    "vm2": "^3.9.11",
-    "riscv-js": "^0.1.0",
-    "node-emulator": "^0.2.0",
-    "qemu.js": "^0.1.0",
-    "node-virtualbox": "^0.3.0",
-    "webgpu": "^0.1.0",
-    "node-workers": "^1.0.0"
-  },
-  "type": "module"
+  "author": "Ceose",
+  "license": "MIT",
+  "dependencies": {}
 }
