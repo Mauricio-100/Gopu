@@ -13,7 +13,8 @@ from gopu.modules import (
     deploy,
     ssh,
     github,
-    netcheck
+    netcheck,
+    upload
 )
 
 def main():
@@ -31,6 +32,7 @@ def main():
         print("  gopu ssh ...              ... Connexion SSH")
         print("  gopu github ...           ... Commandes GitHub")
         print("  gopu netcheck             ... Vérifier connectivité PyPI")
+        print("  gopu upload               ... Publier sur PyPI ou TestPyPI")
         return
 
     cmd = args[0]
@@ -51,6 +53,8 @@ def main():
         github.run(args[1:])
     elif cmd == "netcheck":
         netcheck.run()
+    elif cmd == "upload":
+        upload.run()
     else:
         print(f"❌ Commande inconnue: {cmd}")
 
