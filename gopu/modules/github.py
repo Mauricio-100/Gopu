@@ -123,4 +123,5 @@ def run(args):
             run_cmd(f'git config --global user.name {shlex.quote(name)}')
         if "--email" in args:
             email = args[args.index("--email") + 1]
-            run_cmd(f'git config --global user.email {shlex.quote(email
+            run_cmd(f'git config --global user.email {shlex.quote(email)}')
+
