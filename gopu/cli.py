@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 from gopu.modules import status, infer, token, db, deploy, ssh, github
+from gopu.modules import ..., netcheck
 
 def main():
     args = sys.argv[1:]
@@ -34,6 +35,8 @@ def main():
         github.run(args[1:])
     else:
         print(f"... Commande inconnue: {cmd}")
-
+    # ...
+    elif cmd == "netcheck":
+        netcheck.run()
 if __name__ == "__main__":
     main()
